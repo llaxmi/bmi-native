@@ -5,14 +5,15 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 20,
     paddingVertical: 10,
-    backgroundColor: "#fff",
+    justifyContent: "center",
+    backgroundColor: "white",
   },
   text: {
-    fontSize: 20,
+    fontSize: 24,
+    color: "#3DBBA1",
     fontWeight: "600",
     textAlign: "center",
     marginBottom: 30,
-    color: "#333",
   },
   gender: {
     flexDirection: "row",
@@ -23,7 +24,7 @@ const styles = StyleSheet.create({
   inputContainer: {
     padding: 24,
     borderRadius: 12,
-    backgroundColor: "#E9EFEC",
+    backgroundColor: "#F8FAFC",
     shadowColor: "#697565",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
   },
   inputWrapper: {
     flex: 1,
-    backgroundColor: "#E9EFEC",
+    backgroundColor: "#F8FAFC",
     margin: 8,
     borderRadius: 8,
     alignItems: "center",
@@ -64,7 +65,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   resultContainer: {
-    paddingVertical: 15,
+    paddingVertical: 10,
     paddingHorizontal: 20,
     backgroundColor: "#8CCBBE",
     borderRadius: 8,
@@ -73,7 +74,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   resultText: {
-    fontSize: 16,
+    fontSize: 24,
     fontWeight: "700",
     color: "#fff",
   },
@@ -84,16 +85,10 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
   buttonText: {
-    fontSize: 14,
-    fontWeight: "500",
-    color: "#16423C",
+    color: "#4F6F52",
     marginBottom: 16,
-  },
-  c: {
-    flex: 1,
-  },
-  studyContainer: {
-    marginVertical: 10,
+    fontWeight: "500",
+    fontSize: 18,
   },
   subheader: {
     fontSize: 15,
@@ -105,6 +100,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: "#373A40",
     textAlign: "justify",
+    marginTop: 4,
   },
   againButton: {
     margin: 10,
