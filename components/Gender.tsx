@@ -7,7 +7,7 @@ import {
 } from "react-native";
 
 const { width } = Dimensions.get("window");
-const imageSize = width * 0.15; // Responsive image size based on screen width
+const imageSize = width * 0.15;
 
 const Gender = ({
   isSelected,

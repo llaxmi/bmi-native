@@ -22,9 +22,9 @@ const Calculator = () => {
   ];
 
   const [selectedGender, setSelectedGender] = useState<string>("Female");
-  const [weight, setWeight] = useState<string>("56");
+  const [weight, setWeight] = useState<string>("54");
   const [age, setAge] = useState<string>("23");
-  const [height, setHeight] = useState<string>("102");
+  const [height, setHeight] = useState<string>("155");
 
   const handleCalculation = () => {
     const result = handleCalculateBmi(weight, height, age);
@@ -44,8 +44,7 @@ const Calculator = () => {
       >
         <SafeAreaView style={styles.container}>
           <StatusBar style="dark" />
-          <Text style={styles.text}>BMI Calculator</Text>
-
+          <Text style={styles.text}>BMI CALCULATOR</Text>
           {/* Gender Selection */}
           <View style={styles.gender}>
             {gender.map((item) => (
