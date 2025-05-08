@@ -1,5 +1,5 @@
-import Calculator from "../screens/Calculator";
+import Home from "../screens/Home";
 
 export default function Page() {
-  return <Calculator />;
+  return <Home />;
 }
