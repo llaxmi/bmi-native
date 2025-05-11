@@ -1,85 +1,46 @@
-import React, { useEffect, useRef } from "react";
-import {
-  Dimensions,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import React from "react";
+import { StyleSheet, TextInput, View } from "react-native";
+import { colors } from "../constants/colors";
 
 interface Props {
   selectedValue: string;
   onSelect: (value: string) => void;
+  placeholder?: string;
 }
 
-const ScalePicker = ({ selectedValue, onSelect }: Props) => {
-  const scrollViewRef = useRef<ScrollView>(null);
-  const heightArray = Array.from({ length: 100 }, (_, i) =>
-    (i + 100).toString()
-  );
-
-  const itemWidth = 50; // Width of each item
-  const screenWidth = Dimensions.get("window").width;
-  const centerOffset = (screenWidth - itemWidth) / 6;
-
-  useEffect(() => {
-    const index = heightArray.indexOf(selectedValue);
-
-    // Check if the selectedValue exists in the array and if the scroll view is available
-    if (index !== -1 && scrollViewRef.current) {
-      // Scroll to the position calculated based on the item's index, width, and offset
-      scrollViewRef.current.scrollTo({
-        x: index * itemWidth - centerOffset, // Calculate the horizontal position
-        animated: true,
-      });
-    }
-  }, [selectedValue]);
-
+const Factor = ({ selectedValue, onSelect, placeholder }: Props) => {
   return (
-    <ScrollView
-      ref={scrollViewRef}
-      horizontal
-      showsHorizontalScrollIndicator={false}
-      snapToInterval={itemWidth}
-      decelerationRate="fast"
-      contentContainerStyle={{
-        paddingHorizontal: centerOffset,
-        alignItems: "center",
-      }}
-    >
-      {heightArray.map((value) => (
-        <TouchableOpacity
-          key={value}
-          onPress={() => onSelect(value)}
-          style={{
-            width: itemWidth,
-            alignItems: "center",
-            justifyContent: "center",
-            paddingVertical: 4,
-          }}
-        >
-          <Text
-            style={{
-              fontSize: selectedValue === value ? 26 : 16,
-              fontWeight: selectedValue === value ? "600" : "400",
-              color: selectedValue === value ? "#117554" : "black",
-            }}
-          >
-            {value}
-          </Text>
-          {/* Scale line */}
-          <View
-            style={{
-              width: selectedValue === value ? 2 : 0,
-              height: 10,
-              backgroundColor: "gray",
-              marginVertical: 8,
-            }}
-          />
-        </TouchableOpacity>
-      ))}
-    </ScrollView>
+    <View style={styles.container}>
+      <TextInput
+        style={styles.input}
+        value={selectedValue}
+        onChangeText={onSelect}
+        keyboardType="numeric"
+        maxLength={3}
+        placeholder={placeholder}
+      />
+    </View>
   );
 };
 
-export default ScalePicker;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 10,
+  },
+  input: {
+    width: 100,
+    height: 50,
+    borderRadius: 5,
+    textAlign: "center",
+    borderBottomWidth: 2,
+    borderColor: colors.primary,
+    fontSize: 24,
+    fontFamily: "Raleway-Medium",
+    color: colors.textPrimary,
+  },
+});
+
+export default Factor;

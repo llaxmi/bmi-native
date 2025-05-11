@@ -27,6 +27,22 @@
       "favicon": "./assets/favicon.png"
     },
     "newArchEnabled": true,
-    "plugins": ["expo-router"]
+    "plugins": ["expo-router"],
+    "fonts": [
+      {
+        "asset": "assets/fonts/Raleway-Regular.ttf",
+        "family": "Raleway"
+      },
+      {
+        "asset": "assets/fonts/Raleway-Bold.ttf",
+        "family": "Raleway",
+        "weight": "700"
+      },
+      {
+        "asset": "assets/fonts/Raleway-SemiBold.ttf",
+        "family": "Raleway",
+        "weight": "600"
+      }
+    ]
   }
 }

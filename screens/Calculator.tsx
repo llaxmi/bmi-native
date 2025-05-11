@@ -10,21 +10,17 @@ import {
 } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import Factors from "../components/Factors";
-import Gender from "../components/Gender";
-import ScalePicker from "../components/ScalePicker";
+import GenderBox from "../components/Gender";
+import Factor from "../components/ScalePicker";
+import { colors } from "../constants/colors";
 import styles from "../styles/AppStyles";
 import { handleCalculateBmi } from "../utils/Calculate";
 
 const Calculator = () => {
-  const gender = [
-    { label: "Male", image: require("../assets/man.png") },
-    { label: "Female", image: require("../assets/woman.png") },
-  ];
-
   const [selectedGender, setSelectedGender] = useState<string>("Female");
-  const [weight, setWeight] = useState<string>("54");
-  const [age, setAge] = useState<string>("23");
-  const [height, setHeight] = useState<string>("155");
+  const [weight, setWeight] = useState<string>("");
+  const [age, setAge] = useState<string>("");
+  const [height, setHeight] = useState<string>("");
 
   const handleCalculation = () => {
     const result = handleCalculateBmi(weight, height, age);
@@ -45,14 +41,14 @@ const Calculator = () => {
         <SafeAreaView style={styles.container}>
           <StatusBar style="dark" />
           <Text style={styles.text}>BMI CALCULATOR</Text>
-          {/* Gender Selection */}
+
           <View style={styles.gender}>
-            {gender.map((item) => (
-              <Gender
-                key={item.label}
-                src={item.image}
-                isSelected={selectedGender === item.label}
-                onPress={() => setSelectedGender(item.label)}
+            {["Male", "Female"].map((gender) => (
+              <GenderBox
+                key={gender}
+                label={gender}
+                isSelected={selectedGender === gender}
+                onPress={() => setSelectedGender(gender)}
               />
             ))}
           </View>
@@ -60,9 +56,10 @@ const Calculator = () => {
           {/* Height Selection */}
           <View style={styles.inputContainer}>
             <Text style={styles.label}>Height (cm)</Text>
-            <ScalePicker
+            <Factor
               selectedValue={height}
               onSelect={(value) => setHeight(value)}
+              placeholder="170"
             />
           </View>
 
@@ -78,24 +75,28 @@ const Calculator = () => {
               value={weight}
               label="Weight (kg)"
               onChangeText={(text) => setWeight(text)}
+              placeholder="46"
             />
             <Factors
               value={age}
               label="Age"
               onChangeText={(text) => setAge(text)}
+              placeholder="78"
             />
           </View>
 
+          {/* Calculate Button */}
           <TouchableOpacity
             style={styles.customButton}
             onPress={handleCalculation}
           >
             <Text
               style={{
-                fontSize: 15,
+                fontSize: 16,
                 fontWeight: "500",
                 textAlign: "center",
-                color: "white",
+                color: colors.white,
+                fontFamily: "Raleway-SemiBold",
               }}
             >
               Calculate BMI

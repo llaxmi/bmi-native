@@ -1,6 +1,7 @@
 import { useRouter } from "expo-router";
 import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { colors } from "../constants/colors";
 
 const Home = () => {
   const router = useRouter();
@@ -13,7 +14,9 @@ const Home = () => {
         resizeMode="contain"
       />
       <Text style={styles.title}>Welcome to BMI</Text>
-      <Text style={styles.subtitle}>Your Health, Simplified</Text>
+      <Text style={styles.subtitle}>
+        Your Health, <Text style={{ color: colors.secondary }}>Simplified</Text>
+      </Text>
       <Text style={styles.description}>
         Track your BMI and get personalized health tips to stay fit and aware.
       </Text>
@@ -42,27 +45,30 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   title: {
-    fontSize: 28,
+    fontSize: 32,
     fontWeight: "bold",
-    color: "#1C1C1E",
+    color: colors.textPrimary,
     textAlign: "center",
+    fontFamily: "Raleway-Bold",
   },
   subtitle: {
     fontSize: 18,
-    color: "#4BB5A8",
+    color: colors.primary,
     marginTop: 4,
     marginBottom: 12,
     textAlign: "center",
+    fontFamily: "Raleway-Medium",
   },
   description: {
     fontSize: 16,
-    color: "#6B7280",
+    color: colors.textSecondary,
     textAlign: "center",
     marginBottom: 40,
     paddingHorizontal: 12,
+    fontFamily: "Raleway-Regular",
   },
   button: {
-    backgroundColor: "#4BB5A8",
+    backgroundColor: colors.primary,
     paddingVertical: 14,
     paddingHorizontal: 32,
     borderRadius: 28,
@@ -71,11 +77,13 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 4 },
     shadowRadius: 6,
     elevation: 5,
+    fontFamily: "Raleway-SemiBold",
   },
   buttonText: {
-    color: "#FFF",
+    color: colors.white,
     fontSize: 16,
     fontWeight: "600",
+    fontFamily: "Raleway-SemiBold",
   },
 });
 

@@ -1,64 +1,51 @@
-import {
-  Dimensions,
-  Image,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import React from "react";
+import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import { colors } from "../constants/colors";
 
-const { width } = Dimensions.get("window");
-const imageSize = width * 0.15;
-
-const Gender = ({
-  isSelected,
-  onPress,
-  src,
-}: {
+type Props = {
+  label: string;
   isSelected: boolean;
-  src: any;
   onPress: () => void;
-}) => {
+};
+
+const GenderBox = ({ label, isSelected, onPress }: Props) => {
   return (
     <TouchableOpacity
-      style={[styles.container, isSelected ? styles.selected : {}]}
-      activeOpacity={0.85}
+      style={[styles.box, isSelected && styles.selectedBox]}
       onPress={onPress}
     >
-      <View>
-        <Image source={src} style={styles.image} />
-      </View>
+      <Text style={[styles.label, isSelected && styles.selectedLabel]}>
+        {label}
+      </Text>
     </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 40,
-    backgroundColor: "white",
-    alignItems: "center",
-    justifyContent: "center",
+  box: {
+    paddingVertical: 16,
+    paddingHorizontal: 24,
+    backgroundColor: "#a1ddda",
     borderRadius: 8,
-    shadowColor: "#697565",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.5,
-    elevation: 5,
-    borderWidth: 2,
-    borderColor: "white",
-    // For Android
+    borderWidth: 1,
+    borderColor: "#a1ddda",
+    marginHorizontal: 6,
+    width: "40%",
   },
-  selected: {
-    borderColor: "#8CCBBE",
+  selectedBox: {
+    borderColor: colors.primary,
     borderWidth: 2,
   },
-  image: {
-    width: imageSize,
-    height: imageSize,
-    resizeMode: "contain",
+  label: {
+    fontSize: 18,
+    color: colors.textPrimary,
+    fontFamily: "Raleway-Medium",
+    textAlign: "center",
+  },
+  selectedLabel: {
+    fontFamily: "Raleway-Bold",
+    color: colors.textPrimary,
   },
 });
 
-export default Gender;
+export default GenderBox;

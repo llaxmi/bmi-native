@@ -5,10 +5,12 @@ const Factors = ({
   value,
   label,
   onChangeText,
+  placeholder,
 }: {
   value: string;
   label: string;
   onChangeText: (text: string) => void;
+  placeholder?: string;
 }) => {
   return (
     <View style={styles.inputWrapper}>
@@ -19,6 +21,7 @@ const Factors = ({
         value={value}
         onChangeText={onChangeText}
         maxLength={3}
+        placeholder={placeholder}
       />
     </View>
   );
